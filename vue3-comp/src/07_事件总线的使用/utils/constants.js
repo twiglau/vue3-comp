@@ -1,0 +1,1 @@
+export const WHYCLICK = Symbol.for("whyClick");
