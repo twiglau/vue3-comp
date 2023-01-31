@@ -14,6 +14,7 @@ export default {
              const title = this.$refs.title;
              const bar = this.$refs.navBar;
              console.log(title, bar);
+             console.log(this.$refs.navBar.$el);
         }
     }
 }
