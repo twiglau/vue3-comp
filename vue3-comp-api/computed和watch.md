@@ -86,3 +86,56 @@ watchEffect(() => {
 })
 ```  
 > `flush`选项还接受 sync, 这将强制效果始终同步触发, 然而, 这是低效的, 应该很少需要.
+
+# watch的使用
+
+* watch的API完全等同于组件watch选项的Property:
+- watch需要侦听特定的数据源, 并在回调函数中执行副作用;
+- 默认情况下它是惰性的,只有当被侦听的源发生变化时才会执行回调;
+
+* 与watchEffect的比较,watch允许我们:
+- 懒执行副作用(第一次不会直接执行);
+- 更具体的说明当哪些状态发生变化时,触发侦听器的执行;
+- 访问侦听状态变化前后的值;
+
+* 侦听单个数据源:watch侦听函数的数据源有两种类型:
+- 一个Getter函数: 但是该getter函数必须引用可响应式的对象(比如reactive或者ref);
+- 直接写入一个可可响应式的对象, reactive或者ref(比较常用的是ref);
+
+* 侦听多个数据源: 数组
+
+* 侦听响应对象
+- 如果我们希望侦听一个数据或者对象, 那么可以使用一个getter函数, 并且对可响应对象进行解构:
+```
+const names = reactive(["abc", "cba", "nba"]);
+watch(() => [...names], (newVal, oldVal) => {
+    console.log(newVal, oldVal);
+})
+const changeName = () => {
+    names.push("why");
+}
+```  
+
+* watch的选项
+- 如果我们希望侦听一个深层的侦听, 那么依然需要设置 deep 为 true:
+- 也可以传入 immediate 立即执行
+```
+const state = reactive({
+    name: "why",
+    age: 18,
+    friend: {
+        name: "kobe"
+    }
+})
+
+watch(() => state, (newVal, oldVal) => {
+    console.log(newVal, oldVal);
+}, {
+    deep: true,
+    immediate: true
+})
+
+const changename = () => {
+    state.friend.name = "aaa";
+}
+```  
