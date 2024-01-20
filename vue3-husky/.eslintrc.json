@@ -7,6 +7,7 @@
         "plugin:vue/vue3-essential",
         "standard-with-typescript"
     ],
+    "parser": "vue3",
     "overrides": [
     ],
     "parserOptions": {

@@ -1,19 +1,29 @@
 <script setup lang="ts">
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from "./components/HelloWorld.vue";
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <el-container>
+    <el-aside width="200px">Aside</el-aside>
+    <el-container>
+      <el-header>头部</el-header>
+      <el-main>
+        <div>
+          <h4>TS 使用:</h4>
+          <HelloWorld msg="Vite + Vue" />
+          <h4>自定义button:</h4>
+          <div>
+            <el-button type="primary">primary</el-button>
+            <el-button type="success">success</el-button>
+            <el-button size="small">small</el-button>
+          </div>
+        </div>
+      </el-main>
+      <el-footer>Footer</el-footer>
+    </el-container>
+  </el-container>
 </template>
 
 <style scoped>
