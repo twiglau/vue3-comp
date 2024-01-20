@@ -76,3 +76,11 @@ module.exports = {
   "test": "jest"
 }
 ```
+
+## Form 表单设计
+
+1. 职责划分
+
+- el-form 组件负责最外层的表单容器 : model 提供数据绑定, rules 提供输入校验规则,规范用户的输入内容;
+- el-form-item 组件负责每个输入项的 label 和 校验管理: 作为输入项的容器,对输入进行校验,显示错误信息;
+- 内部的 el-input 或者 el-switch 负责具体的输入组件

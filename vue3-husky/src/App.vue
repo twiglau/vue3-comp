@@ -1,7 +1,33 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
+import { ref, reactive } from "vue";
 import HelloWorld from "./components/HelloWorld.vue";
+import { FormType } from "./components/form/type";
+
+const model = reactive({
+  username: "",
+  password: "",
+});
+const rules = reactive({
+  username: {
+    required: true,
+    message: "请输入用户名!",
+  },
+  password: {
+    required: true,
+    message: "请输入密码!",
+  },
+});
+
+const myForm = ref<FormType>();
+const login = () => {
+  myForm.value?.validate((isValid) => {
+    if (isValid) {
+      console.log(model);
+    } else {
+      alert("请正确填写表单!");
+    }
+  });
+};
 </script>
 
 <template>
@@ -19,13 +45,24 @@ import HelloWorld from "./components/HelloWorld.vue";
             <el-button type="success">success</el-button>
             <el-button size="small">small</el-button>
           </div>
+          <h4>自定义表单:</h4>
+          <el-form ref="myForm" :model="model" :rules="rules">
+            <el-form-item label="用户名:" prop="username">
+              <el-input v-model="model.username" />
+            </el-form-item>
+            <el-form-item label="密码:" prop="password">
+              <el-input v-model="model.password" type="password" />
+            </el-form-item>
+            <el-form-item>
+              <el-button type="primary" @click="login">登录</el-button>
+            </el-form-item>
+          </el-form>
         </div>
       </el-main>
       <el-footer>Footer</el-footer>
     </el-container>
   </el-container>
 </template>
-
 <style scoped>
 .logo {
   height: 6em;
