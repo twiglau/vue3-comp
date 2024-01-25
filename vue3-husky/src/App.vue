@@ -2,7 +2,7 @@
 import { ref, reactive } from "vue";
 import HelloWorld from "./components/HelloWorld.vue";
 import { FormType } from "./components/form/type";
-
+import { Notification } from "./components/notification/Notification.js";
 const model = reactive({
   username: "",
   password: "",
@@ -24,7 +24,7 @@ const login = () => {
     if (isValid) {
       console.log(model);
     } else {
-      alert("请正确填写表单!");
+      Notification.info("请正确填写表单");
     }
   });
 };
@@ -57,6 +57,7 @@ const login = () => {
               <el-button type="primary" @click="login">登录</el-button>
             </el-form-item>
           </el-form>
+          <h5>通知</h5>
         </div>
       </el-main>
       <el-footer>Footer</el-footer>
