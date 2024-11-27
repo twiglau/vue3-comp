@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
-import App from './10_作用域插槽的使用/App.vue'
+import { createApp } from "vue";
+import App from "./00_Props/App.vue";
 
-createApp(App).mount('#app')
+createApp(App).mount("#app");
