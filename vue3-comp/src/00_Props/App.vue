@@ -6,22 +6,43 @@
     @updateUserName="receiveUserName"
     @updateUserAge="receiveUserAge"
   />
-  <h5>v-bind 和 v-on</h5>
+  <h5>1. v-bind 和 v-on</h5>
   <User2 v-bind="userInfo" v-on="userEventHandlers" />
-  <h5>props invalidator</h5>
+  <h5>2. props invalidator</h5>
   <Image imgStyle="aaa" />
-  <h5>v-for 对对象的解构</h5>
+  <h5>3. v-for 对对象的解构</h5>
   <Vfor />
-  <h5>递归组件使用 -正常模式</h5>
+  <h5>4. 递归组件使用 -正常模式</h5>
   <recursiveComp :list="list" />
-  <h5>递归组件使用 -插槽模式</h5>
+  <h5>5. 递归组件使用 -插槽模式</h5>
   <recursiveComp :list="list">
     <template v-slot="{ item }">
       <strong>{{ item }}</strong>
     </template>
   </recursiveComp>
-  <h5>为组件添加元数据</h5>
+  <h5>6. 为组件添加元数据</h5>
   <Widget />
+  <h5>7. 多文件的单组件</h5>
+  <single-comp />
+  <h5>8. 组件懒加载</h5>
+  <lazy-comp />
+  <h5>9. 检测点击外部</h5>
+  <pop-up />
+  <h5>10. 将子组件所有插槽传递给父组件</h5>
+  <wrapper-component>
+    <div>默认插槽</div>
+    <template #second>
+      <div>second 插槽</div>
+    </template>
+    <template v-slot:third="{ info }">
+      <div>third 插槽: {{ info }}</div>
+    </template>
+  </wrapper-component>
+  <h5>11. 组件之间共享状态</h5>
+  <div>
+    <Share1Comp />
+    <Share2Comp />
+  </div>
 </template>
 <script setup>
 import { reactive, ref } from "vue";
@@ -31,6 +52,12 @@ import Image from "./Image.vue";
 import Vfor from "./Vfor.vue";
 import recursiveComp from "./recursive-comp.vue";
 import Widget from "./MetaData-Comp.vue";
+import SingleComp from "./Single.vue";
+import LazyComp from "./LazyComp.vue";
+import PopUp from "./PopUp.vue";
+import WrapperComponent from "./WrapperComponent.vue";
+import Share1Comp from "./Share1Comp.vue";
+import Share2Comp from "./Share2Comp.vue";
 
 console.log("父组件获取到 Widget子组件的 元数据:", Widget.columns);
 

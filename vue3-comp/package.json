@@ -10,6 +10,8 @@
   "dependencies": {
     "core-js": "^3.8.3",
     "mitt": "^3.0.0",
+    "sass": "^1.81.0",
+    "sass-loader": "^16.0.3",
     "vue": "^3.2.13"
   },
   "devDependencies": {
@@ -34,7 +36,7 @@
       "parser": "@babel/eslint-parser"
     },
     "rules": {
-      "vue/multi-word-component-names":0
+      "vue/multi-word-component-names": 0
     }
   },
   "browserslist": [

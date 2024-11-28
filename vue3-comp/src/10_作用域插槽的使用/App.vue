@@ -13,14 +13,19 @@
     <show-names :names="names" v-slot="slotProps">
       <button>{{ slotProps.item }} - {{ slotProps.index }}</button>
     </show-names>
+
+    <hr />
+    <h5>1. scoped slots 基本使用</h5>
+    <scoped-slots-parent />
   </div>
 </template>
 
 <script>
 // import ChildCpn from "./ChildCpn.vue";
 import ShowNames from "./ShowNames.vue";
+import ScopedSlotsParent from "./ScopedSlotsParent.vue";
 export default {
-  components: { ShowNames },
+  components: { ShowNames, ScopedSlotsParent },
   data() {
     return {
       names: ["why", "jojo", "curry"],
