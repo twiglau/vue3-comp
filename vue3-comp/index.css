@@ -1,0 +1,74 @@
+/* 1. 设置宽高比 */
+.box {
+    width: 90%;
+    aspect-ratio: 16/9;
+}
+
+/* 
+2. 逻辑属性(Logical Properties) 
+2.1 使用 margin-block 和 margin-inline 替代传统的 margin-top, margin-right 等,
+更加简洁直观
+2.2 这些属性会自动适配文本方向(如从左到右 或 从右到左)
+*/
+.box1 {
+    /* 上边距 5px, 下边距 10px*/
+    margin-block: 5px 10px;
+    /* 左边距 20px, 右边距 30px*/
+    margin-inline: 20px 30px;
+    /* 上下内边距 */
+    padding-block: 10px 20px;
+    /* 左右内边距 */
+    padding-inline: 15px 25px;
+}
+
+/* 
+3. 全局盒模型设置 
+通过以下一行代码让所有元素包含期内边距和边框
+*/
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* 4. 文本移除省略号 */
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 
+5. 居中对齐
+使用 place-items 快速实现网络容器的水平和垂直居中对齐
+*/
+.box2 {
+    display: grid;
+    place-items: center;
+}
+
+/*
+6. 限制文本宽度
+通过限制每行文本的最大字符数,提升可读性: 
+ch - 单位表示一个字符的宽度, 非常适合用于段落样式
+*/
+p {
+    max-width: 100ch;
+}
+
+/*
+7. 占位符样式 (Styling Placeholder Text)
+*/
+::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+/*
+8. 统一强调色 (Accent Color)
+通过 accent-color 为交互元素 (如按钮, 复选框) 设置统一的主题颜色;
+*/
+body {
+    accent-color: green;
+}
